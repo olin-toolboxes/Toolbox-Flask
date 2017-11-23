@@ -1,0 +1,20 @@
+<!doctype html>
+
+<head>
+    <title>Flask</title>
+    <h1> Your Profile </h1>
+</head>
+
+<body>
+        {% if error %}
+          <h3>Error: {{ error }}!</h3>
+        {% endif %}
+
+    <p> Name: {{name}} </p>
+    <p> Age: {{age}} </p>
+    <p> Favorite NINJA: Patrick Huston </p>
+
+    <form action="/" method="GET">
+      <input type="submit" value="Return to Home">
+    </form>
+</body>
