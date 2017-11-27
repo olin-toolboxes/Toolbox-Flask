@@ -13,27 +13,34 @@ def login():
     age = request.form['age']
     fav = request.form['fav']
 
-    print(name)
-    print(fav)
-    if fav == 'Emily':
-        return render_template('profile.html', name = name, age = age)
+    x = int(age)
+    print(x)
+    if x<100:
+        print('yeeee')
+        if fav == 'Emily':
+            return render_template('profile.html', name = name, age = age)
+        else:
+            return render_template('error_page.html', name = name, age = age)
     else:
-        return render_template('error_page.html', name = name, age = age)
+        print('here')
+        return render_template('missing.html')
+
+@app.route('/missing', methods=['GET', 'POST'])
+def missing():
+    render_template('missing.html')
 
 @app.route('/redo', methods=['GET', 'POST'])
 def redo():
     global name, age
     fav = request.form['fav']
 
-    print(name)
-    print(fav)
     if fav == 'Emily':
         return render_template('profile.html', name = name, age = age)
     else:
         return render_template('error_page.html', name = name, age = age)
 
 @app.route('/')
-def hello_world():
+def main():
     return render_template('index.html')
 
 if __name__ == '__main__':
